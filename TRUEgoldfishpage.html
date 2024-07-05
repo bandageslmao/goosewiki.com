@@ -56,7 +56,7 @@
     </div>
     <div id="audio-container">
         <audio id="myAudio">
-            <source src="your-audio-file.mp3" type="audio/mp3">
+            <source src="music/2. TWIDDLEFINGER (INSTRUMENTAL).mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
     </div>
@@ -64,9 +64,16 @@
     <script>
         function enableAutoplay() {
             document.getElementById('splash-screen').style.display = 'none';
-            document.getElementById('audio-container').style.display = 'block';
             var audio = document.getElementById('myAudio');
-            audio.play();
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Audio is playing.');
+                }).catch(error => {
+                    console.log('Failed to play audio:', error);
+                });
+            }
         }
     </script>
 </body>
