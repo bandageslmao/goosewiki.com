@@ -3,33 +3,55 @@
 <head>
     <title>goosewiki.com</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="autoplay.js"></script>
-    <script>
-        function enableAutoplay() {
-            var audio = document.getElementById('myAudio');
-            audio.setAttribute('autoplay', true);
-            hideSplashScreen();
+    <style>
+        h1, p, div { text-align: center; }
+        body {
+            background-image: url('images/gooswiki.png');
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
         }
-
-        function disableAutoplay() {
-            var audio = document.getElementById('myAudio');
-            audio.removeAttribute('autoplay');
-            hideSplashScreen();
+        #splash-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+            text-align: center;
         }
-
-        function hideSplashScreen() {
-            var splashScreen = document.getElementById('splash-screen');
-            splashScreen.style.display = 'none';
+        #splash-screen button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
         }
-    </script>
+        #audio-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+        audio {
+            display: none; /* Hide the audio element */
+        }
+    </style>
 </head>
 <body>
     <div id="splash-screen">
         <div>
-            <p>Click to control autoplay</p>
+            <p>Hey, Before you get to it, would you like some music?</p>
             <button onclick="enableAutoplay()">Enable Autoplay</button>
-            <button onclick="disableAutoplay()">Disable Autoplay</button>
+            <button onclick="skipAutoplay()">Skip Autoplay</button>
         </div>
     </div>
     <div id="audio-container">
@@ -38,5 +60,26 @@
             Your browser does not support the audio element.
         </audio>
     </div>
+
+    <script>
+        function enableAutoplay() {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('audio-container').style.display = 'block';
+            var audio = document.getElementById('myAudio');
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Audio is playing.');
+                }).catch(error => {
+                    console.log('Failed to play audio:', error);
+                });
+            }
+        }
+
+        function skipAutoplay() {
+            document.getElementById('splash-screen').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
