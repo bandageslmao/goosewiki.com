@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>goosewiki.com</title>
+    <title>tcrswiki</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <style>
-        h1, p, div { text-align: center; }
         body {
-            background-image: url('images/gooswiki.png');
+            background-image: url('images/TCRS.png');
             margin: 0;
             padding: 0;
             width: 100%;
-            height: 100%;
+            height: 100vh; /* Use vh to ensure it takes the full viewport height */
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column; /* Column direction to handle vertical alignment */
+            justify-content: flex-start; /* Align items at the start vertically */
+            align-items: center; /* Center horizontally */
             color: #fff;
+            text-align: center;
         }
         #splash-screen {
             position: absolute;
@@ -25,7 +26,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 255, 0, 1);
             z-index: 10;
             text-align: center;
         }
@@ -44,6 +45,17 @@
         audio {
             display: none; /* Hide the audio element */
         }
+        .text-background {
+            background-color: rgba(0, 255, 0, 0.7); /* Adjust the background color and opacity as needed */
+            padding: 20px; /* Add some padding for better readability */
+            display: inline-block; /* Ensures the background only covers the text */
+            margin-top: 20px; /* Add margin to push it away from the top */
+        }
+        .container {
+            width: 100%; /* Take the full width */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+        }
     </style>
 </head>
 <body>
@@ -55,10 +67,17 @@
         </div>
     </div>
     <div id="audio-container">
-        <audio id="myAudio">
+        <audio id="myAudio" loop>
             <source src="music/smktitle.mp3" type="audio/mp3">
             Your browser does not support the audio element.
         </audio>
+    </div>
+
+    <div class="container">
+        <div class="text-background">
+            <h1>Welcome to Goose Wiki!</h1>
+            <p>fire</p>
+        </div>
     </div>
 
     <script>
