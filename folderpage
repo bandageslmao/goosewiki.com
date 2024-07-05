@@ -1,19 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <title>goosewiki.com</title>
-      <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <title>goosewiki</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <style>
+        body {
+            background-image: url('images/gooswiki.png');
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh; /* Use vh to ensure it takes the full viewport height */
+            display: flex;
+            flex-direction: column; /* Column direction to handle vertical alignment */
+            justify-content: flex-start; /* Align items at the start vertically */
+            align-items: center; /* Center horizontally */
+            color: #fff;
+            text-align: center;
+        }
+        #splash-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(79, 121, 66, 1);
+            z-index: 10;
+            text-align: center;
+        }
+        #splash-screen button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        #audio-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+        audio {
+            display: none; /* Hide the audio element */
+        }
+        .text-background {
+            background-color: rgba(79, 121, 66, 0.7); /* Adjust the background color and opacity as needed */
+            padding: 20px; /* Add some padding for better readability */
+            display: inline-block; /* Ensures the background only covers the text */
+            margin-top: 20px; /* Add margin to push it away from the top */
+        }
+        .container {
+            width: 100%; /* Take the full width */
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+        }
+    </style>
 </head>
-
-<style>
-h1 {text-align: center;}
-p {text-align: center;}
-div {text-align: center;}
-body {
-  background-image: url('images/gooswiki.png');
-}
-</style>
 <body>
+    <div id="splash-screen">
+        <div>
+            <p>Hey, Before you get to it, would you like some music?</p>
+            <button onclick="enableAutoplay()">Enable Autoplay</button>
+            <button onclick="skipAutoplay()">Skip Autoplay</button>
+        </div>
+    </div>
+    <div id="audio-container">
+        <audio id="myAudio" loop>
+            <source src="music/250-milliseconds-of-silence.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
+    <div class="container">
+        <div class="text-background">
+            <h1>goldfish</h1>
+        </div>
+    </div>
+
+    <script>
+        function enableAutoplay() {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('audio-container').style.display = 'block';
+            var audio = document.getElementById('myAudio');
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Audio is playing.');
+                }).catch(error => {
+                    console.log('Failed to play audio:', error);
+                });
+            }
+        }
+
+        function skipAutoplay() {
+            document.getElementById('splash-screen').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
