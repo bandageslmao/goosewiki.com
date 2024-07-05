@@ -3,26 +3,6 @@
 <head>
     <title>goosewiki.com</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <script src="autoplay.js"></script>
-    <script>
-        function enableAutoplay() {
-            var audio = document.getElementById('myAudio');
-            audio.setAttribute('autoplay', true);
-            hideSplashScreen();
-        }
-
-        function disableAutoplay() {
-            var audio = document.getElementById('myAudio');
-            audio.removeAttribute('autoplay');
-            hideSplashScreen();
-        }
-
-        function hideSplashScreen() {
-            var splashScreen = document.getElementById('splash-screen');
-            splashScreen.style.display = 'none';
-        }
-    </script>
 </head>
 <body>
     <div id="splash-screen">
@@ -38,6 +18,25 @@
             Your browser does not support the audio element.
         </audio>
     </div>
+
+    <script>
+        function enableAutoplay() {
+            var audio = document.getElementById('myAudio');
+            audio.autoplay = true; // Set autoplay property
+            hideSplashScreen();
+        }
+
+        function disableAutoplay() {
+            var audio = document.getElementById('myAudio');
+            audio.autoplay = false; // Explicitly set autoplay to false
+            hideSplashScreen();
+        }
+
+        function hideSplashScreen() {
+            var splashScreen = document.getElementById('splash-screen');
+            splashScreen.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
 
