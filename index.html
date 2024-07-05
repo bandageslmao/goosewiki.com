@@ -6,16 +6,28 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="autoplay.js"></script>
     <script>
+        function enableAutoplay() {
+            var audio = document.getElementById('myAudio');
+            audio.setAttribute('autoplay', true);
+            hideSplashScreen();
+        }
+
         function disableAutoplay() {
             var audio = document.getElementById('myAudio');
             audio.removeAttribute('autoplay');
+            hideSplashScreen();
+        }
+
+        function hideSplashScreen() {
+            var splashScreen = document.getElementById('splash-screen');
+            splashScreen.style.display = 'none';
         }
     </script>
 </head>
 <body>
     <div id="splash-screen">
         <div>
-            <p>Hey! Before you go on, would you like some music?</p>
+            <p>Click to control autoplay</p>
             <button onclick="enableAutoplay()">Enable Autoplay</button>
             <button onclick="disableAutoplay()">Disable Autoplay</button>
         </div>
@@ -28,3 +40,4 @@
     </div>
 </body>
 </html>
+
