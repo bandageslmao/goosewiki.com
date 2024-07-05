@@ -1,0 +1,41 @@
+h1 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+body {
+    background-image: url('images/gooswiki.png');
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+#splash-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    text-align: center;
+}
+#splash-screen button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#audio-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: none;
+}
+audio {
+    display: none; /* Hide the audio element */
+}
